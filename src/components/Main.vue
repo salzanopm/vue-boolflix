@@ -2,14 +2,17 @@
   <main>
      <ul>
          <li>ciao</li>
-         <li>ciao</li>
      </ul>
   </main>
 </template>
 
 <script>
+
 export default {
     name:'Main',
+    components: {
+        Cards,
+    }
 }
 </script>
 
