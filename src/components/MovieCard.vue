@@ -1,19 +1,23 @@
 <template>
-    <div class="movie">
-        <div>Titolo: {{details.title}}</div>
-        <div>Titolo originale: {{details.original_title}}</div>
-        <!-- se bandiera inclusa in array, usa immagine -->
-        <div v-if="flagList.includes(details.original_language)">
-            Lingua:
-            <img :src="require(`../assets/${details.original_language}.png`)" class="img-language" alt="">
+    <div>
+        <div>
+            <img :src="`https://image.tmdb.org/t/p/${imgWidth}${details.poster_path}`" alt="">
         </div>
-        <!-- altrimenti stampa normalmente -->
-        <div v-else>
-            Lingua: {{details.original_language}}
+        <div class="movie">
+            <div>Titolo: {{details.title}}</div>
+            <div>Titolo originale: {{details.original_title}}</div>
+            <!-- se bandiera inclusa in array, usa immagine `-->
+            <div v-if="flagList.includes(details.original_language)">
+                Lingua:
+                <img :src="require(`../assets/${details.original_language}.png`)" class="img-language" alt="">
+            </div>
+            <!-- altrimenti stampa normalmente -->
+            <div v-else>
+                Lingua: {{details.original_language}}
+            </div>
+            <div>Voto: {{details.vote_average}}</div>
         </div>
-        <div>Voto: {{details.vote_average}}</div>
-    </div>
-
+</div>
 </template>
 
 <script>
@@ -24,8 +28,10 @@ export default {
     },
     data: function() {
         return {
-            flagList: ['it','en']
+            flagList: ['it','en'],
+            imgWidth: 'w500'
         }
+
     }
 }
 </script>
