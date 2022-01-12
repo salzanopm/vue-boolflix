@@ -1,26 +1,51 @@
 <template>
   <div id="app">
-    <Header/>
-    <Main />
+    <!-- evento che ascolto dal figlio -->
+    <Header @searchDone="search" />
   </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import Main from "./components/Main.vue";
+// importo axios per chiamata api (dopo aver fatto npm install axios)
+import axios from 'axios';
+import Header from './components/Header.vue';
 export default {
   name: "App",
   components: {
     Header,
-    Main
   },
-};
+  data: function() {
+    return {
+      queryValue: '',
+      apiKey: 'a0b682908621022f4b52c032dae08e99'
+    }
+  },
+  methods: {
+    search: function(userString) {
+      this.queryValue = userString;
+      this.getMovies();
+    },
+    // funzione chiamata API
+    getMovies: function() {
+      axios.get(
+        // richiesta API
+        'https://api.themoviedb.org/3/search/movie',
+        {
+          //dentro richiesta API mettiamo i parametri della chiamata in un oggetto
+          params: {
+            api_key: this.apiKey, // variabilizzata in data 
+            query: this.queryValue, // variabilizzata in data 
+          }
+        }
+      // seconda parte richiesta API
+      ).then((response) => {
+        console.log(response)
+      }); 
+    }
+  }
+} 
 </script>
 
 <style>
-#app {
-  width: 80%;
-  margin: auto;
-  text-align: center;
-}
+
 </style>
