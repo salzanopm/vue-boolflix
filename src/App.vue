@@ -2,6 +2,7 @@
   <div id="app">
     <!-- evento che ascolto dal figlio -->
     <Header @searchDone="search" />
+    <Main :moviesList="moviesArray"/>
   </div>
 </template>
 
@@ -9,15 +10,18 @@
 // importo axios per chiamata api (dopo aver fatto npm install axios)
 import axios from 'axios';
 import Header from './components/Header.vue';
+import Main from './components/Main.vue';
 export default {
   name: "App",
   components: {
     Header,
+    Main
   },
   data: function() {
     return {
       queryValue: '',
-      apiKey: 'a0b682908621022f4b52c032dae08e99'
+      apiKey: 'a0b682908621022f4b52c032dae08e99',
+      moviesArray: []
     }
   },
   methods: {
@@ -39,7 +43,8 @@ export default {
         }
       // seconda parte richiesta API
       ).then((response) => {
-        console.log(response)
+        // popolo il mio array con i risultati dell'API
+        this.moviesArray = response.data.results
       }); 
     }
   }
