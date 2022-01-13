@@ -1,9 +1,10 @@
 <template>
-<div>
-    <div>
-        <img :src="`https://image.tmdb.org/t/p/${imgWidthMovie}${details.poster_path}`" alt="">
+<div class="cont">
+    
+    <div  class="img-container"  >
+        <img class="img-card" :src="`https://image.tmdb.org/t/p/${imgWidthMovie}${details.poster_path}`" alt="">
     </div>
-    <div class="movie">
+    <div class="info-container">
         <div>Titolo: {{details.title}}</div>
         <div>Titolo originale: {{details.original_title}}</div>
         <!-- se bandiera inclusa in array, usa immagine `-->
@@ -20,6 +21,9 @@
             <i class="fas fa-star" v-for="number,index in getNumberOfStars(details.vote_average)" :key='index'></i>
             <i class="far fa-star" v-for="number,index in (5 - getNumberOfStars(details.vote_average))" :key='index'></i>
         <!-- <div>Voto: {{details.vote_average}}</div> -->
+        </div>
+        <div>
+            Lingua: {{details.overview}}
         </div>
     </div>
 </div>
@@ -40,20 +44,51 @@ export default {
     data: function() {
         return {
             flagListMovie: ['it','en'],
-            imgWidthMovie: 'w342'
+            imgWidthMovie: 'w342',
+            value1: true,
+            value2: false
         }
-
     }
 }
+
+  
+   
+
 </script>
 
-<style scoped>
-.movie {
+<style scoped lang="scss">
+
+.img-container {
+    width: 342px;
+    height: 658px;
     margin: 20px;
-    border: 2px solid black;
+    img {
+        width: 100%;
+        height: 100%;
+    }
 }
+
+.info-container {
+    width: 342px;
+    height: 658px;
+    margin: 20px;
+    display: none;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.cont:hover .img-container{
+    display: none;
+
+}
+.cont:hover .info-container{
+    display: block;
+    
+}
+
 
 .img-language {
     width: 10px;
 }
 </style>
+
