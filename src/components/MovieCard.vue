@@ -2,7 +2,8 @@
 <div class="cont">
     
     <div  class="img-container"  >
-        <img class="img-card" :src="`https://image.tmdb.org/t/p/${imgWidthMovie}${details.poster_path}`" alt="">
+        <img v-if="details.poster_path" class="img-card" :src="`https://image.tmdb.org/t/p/${imgWidthMovie}${details.poster_path}`" alt="">
+        <h2 v-else>{{details.title}} {{details.name}}</h2>
     </div>
     <div class="info-container">
         <div>Titolo: {{details.title}} {{details.name}} </div>
@@ -45,8 +46,7 @@ export default {
         return {
             flagListMovie: ['it','en'],
             imgWidthMovie: 'w342',
-            value1: true,
-            value2: false
+           
         }
     }
 }
@@ -62,8 +62,9 @@ export default {
 }
 .img-container {
     width: 342px;
-    height: 658px;
+    height: 600px;
     margin: 20px;
+    background-color: white;
     img {
         width: 100%;
         height: 100%;
@@ -72,7 +73,7 @@ export default {
 
 .info-container {
     width: 342px;
-    height: 658px;
+    height: 600px;
     margin: 20px;
     display: none;
     border: 1px solid black;
@@ -91,6 +92,13 @@ export default {
 
 .img-language {
     width: 15px;
+}
+
+h2 {
+    text-align: center;
+    line-height: 200px;
+    font-size: 40px;
+    color:black;
 }
 </style>
 
