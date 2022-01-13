@@ -40,7 +40,7 @@ export default {
     data: function() {
         return {
             flagListMovie: ['it','en'],
-            imgWidthMovie: 'w500'
+            imgWidthMovie: 'w342'
         }
 
     }

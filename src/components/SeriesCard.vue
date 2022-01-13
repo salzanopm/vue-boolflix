@@ -34,7 +34,7 @@ export default {
     data: function() {
         return {
             flagListSeries: ['it','en'],
-            imgwidthSeries: 'w500'
+            imgwidthSeries: 'w342'
         }
     },
     methods: {
