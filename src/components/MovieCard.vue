@@ -5,8 +5,8 @@
         <img class="img-card" :src="`https://image.tmdb.org/t/p/${imgWidthMovie}${details.poster_path}`" alt="">
     </div>
     <div class="info-container">
-        <div>Titolo: {{details.title}}</div>
-        <div>Titolo originale: {{details.original_title}}</div>
+        <div>Titolo: {{details.title}} {{details.name}} </div>
+        <div>Titolo originale: {{details.original_title}} {{details.original_name}}</div>
         <!-- se bandiera inclusa in array, usa immagine `-->
         <div v-if="flagListMovie.includes(details.original_language)">
             Lingua:
@@ -57,7 +57,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.fas.fa-star {
+    color: rgb(245, 224, 39);
+}
 .img-container {
     width: 342px;
     height: 658px;
@@ -75,6 +77,8 @@ export default {
     display: none;
     border: 1px solid black;
     padding: 20px;
+    background-color: rgba(80, 80, 80, 0.6);
+    color: white;
 }
 
 .cont:hover .img-container{
@@ -83,12 +87,10 @@ export default {
 }
 .cont:hover .info-container{
     display: block;
-    
 }
 
-
 .img-language {
-    width: 10px;
+    width: 15px;
 }
 </style>
 

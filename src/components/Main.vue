@@ -29,16 +29,17 @@ export default {
 
 <style lang="scss" scoped>
 main {
-    background-color: darkgray;
+    background-color: black;
     height: calc(100vh - 130px);
 }
 .card-container {
     display: flex;
     overflow-x: auto;
-    background-color: darkgray;
+    background-color: black;
 }
 
 h2 {
-    background-color: darkgray;
+    background-color: black;
+    
 }
 </style>
